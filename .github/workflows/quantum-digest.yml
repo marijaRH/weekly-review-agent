@@ -1,0 +1,46 @@
+# Run quantum digest at 8 AM CET every day (runs on GitHub's servers, so no need for your Mac to be on).
+# Add repo secrets: QUANTUM_DIGEST_RECIPIENT, GMAIL_APP_PASSWORD (Settings → Secrets and variables → Actions).
+
+name: Quantum Digest 8AM CET
+
+on:
+  schedule:
+    # 07:00 UTC = 8 AM CET (winter) / 9 AM CEST (summer)
+    - cron: '0 7 * * *'
+  workflow_dispatch:  # allow "Run workflow" from Actions tab for testing
+
+jobs:
+  send-digest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install feedparser
+        run: pip install feedparser
+
+      - name: Run quantum digest
+        env:
+          QUANTUM_DIGEST_RECIPIENT: ${{ secrets.QUANTUM_DIGEST_RECIPIENT }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: |
+          if [ -f config/scripts/quantum_daily_digest.py ]; then cd config; fi
+          python scripts/quantum_daily_digest.py
+
+      - name: Persist sent-log (so tomorrow you get different articles)
+        run: |
+          if [ -f config/scripts/.quantum-digest-sent.log ]; then cd config; fi
+          if [ -f scripts/.quantum-digest-sent.log ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add scripts/.quantum-digest-sent.log
+            git diff --staged --quiet || git commit -m "chore: update digest sent log"
+            git push
+          fi
+        permissions:
+          contents: write

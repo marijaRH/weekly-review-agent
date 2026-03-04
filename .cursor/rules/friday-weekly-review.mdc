@@ -1,0 +1,13 @@
+---
+description: Run the Friday weekly review agent when the user asks for weekly summary, Friday review, or what they accomplished / to-do
+globs:
+alwaysApply: false
+---
+
+When the user asks for a **Friday review**, **weekly summary**, **weekly recap**, **what I did this week**, **what's left to do**, or similar:
+
+1. Read and follow **FRIDAY_REVIEW_SKILL.md** in this project root.
+2. Use MCP tools (user-calendar-assistant, user-gmail, user-gdrive-assistant, project-0-config-mcp-workboard) to gather calendar events, emails, call transcripts, and WorkBoard OKRs for the review window.
+3. Produce the two summary views: **Accomplished** and **To-Do**, in one markdown block.
+
+Do not invent data; only report what the APIs return.

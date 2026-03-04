@@ -1,0 +1,3 @@
+# For ai_office_hours_transcripts_sync.py (Calendar + Drive sync)
+google-api-python-client>=2.100.0
+google-auth>=2.23.0

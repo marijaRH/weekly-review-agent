@@ -1,0 +1,7 @@
+# Local env with secrets (see *.env.example)
+scripts/quantum-digest.env
+scripts/workboard.env
+scripts/digest-*.env
+scripts/ai-office-hours-sync.env
+scripts/quantum-digest.env
+scripts/digest-*.env

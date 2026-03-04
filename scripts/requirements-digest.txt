@@ -1,0 +1,2 @@
+# For quantum_daily_digest.py (run: pip install -r requirements-digest.txt)
+feedparser>=6.0.0
