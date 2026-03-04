@@ -62,4 +62,4 @@ Then the agent will use the skill whenever you mention those phrases.
 
 ## Transcripts folder (optional)
 
-The AI office hours sync copies recordings/transcripts to a Drive folder (see **AI_OFFICE_HOURS_SYNC_README.md**). The skill uses folder ID `1qWWkHcqefAS5RVCCUazcEjsRHesWfVo2` by default. If your folder is different, tell the agent: *"Use Drive folder ID … for transcripts."*
+The skill can list and read transcript docs from a Google Drive folder. It uses folder ID `1qWWkHcqefAS5RVCCUazcEjsRHesWfVo2` by default (or one you set in the skill). If your transcripts live in a different folder, tell the agent: *"Use Drive folder ID … for transcripts."*
