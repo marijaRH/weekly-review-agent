@@ -130,7 +130,7 @@ Keep each section short (bullets, 1 line per item unless the user asked for deta
 ## 5. Optional: export or schedule
 
 - If the user wants to **save** the review: offer to write it to a file (e.g. `friday-review-YYYY-MM-DD.md`) in the repo or a path they choose.
-- If they want it **emailed**: they can use an existing digest-style script; the agent does not send email by default.
+- If they want it **emailed**: they can use an external script or tool; the agent does not send email by default.
 
 ---
 
